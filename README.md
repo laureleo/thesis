@@ -6,7 +6,7 @@
 * (.thesis) $ pip install --upgrade pip
 * (.thesis) $ pip install -r requirements.txt
 
-* make sure you use the .thesis kernel when opening a notebook
+* make sure you use the .thesis kernel when opening jupyter lab
 
 
 # For progress bars
