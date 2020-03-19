@@ -8,8 +8,9 @@
 
 * make sure you use the .thesis kernel when opening jupyter lab
 
-
 # For progress bars
 jupyter nbextension enable --py widgetsnbextension
 jupyter labextension install @jupyter-widgets/jupyterlab-manager
 
+# Dealing with GPU OOM
+Simplest workaround seems to be closing down the notebook, then restarting it. You can check the held GPU with nvidia-smi
