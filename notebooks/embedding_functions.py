@@ -22,7 +22,7 @@ def get_embeddings_with_cpu(data_tensor, mask_tensor):
 """
 For dealing with large amounts of data, a GPU is much faster
 
-The resulting embedding matrix is a three-dimensional tensor corresponding to [Sentence][Words][Embeddings]
+The resulting embedding matrix is a three-dimensional tensor corresponding to                 [Sentence][Words][Embeddings]
 embeddings[5][4][:] is thus the embedding of the fourth word in the fifth sentence
 """
 
@@ -49,11 +49,12 @@ def get_embeddings_with_gpu(data_matrix, mask_matrix):
 
     return matrix_embedding
 
-#embedding_matrix = get_embeddings_with_gpu(data_matrix[:10], mask_matrix[:10])
+#Keep amount of samples low to not overwhelm the gpu
+#get_embeddings_with_gpu(data_tensor_matrix[:10], mask_tensor_matrix[:10])
 
 """
-Most people won't be able to load all the data onto the GPU at once however, so it's better to do it in batches.
-(50 input sentences take 2803MB on my computer, for example).
+Most people won't be able to load all the data onto the GPU at once however, so it's better   to do it in batches.
+(50 input sentences take 2803MB on my computer, for example). Though this depends on the dimensionality/sentence_length you use, naturally
 
 This method batchifies and stitches together the batches
 """
@@ -86,6 +87,4 @@ def get_embeddings_with_gpu_batch(data_matrix, mask_matrix, batch_size):
 
     return embedding_matrix
 
-
-#embedding_matrix = get_embeddings_with_gpu_batch(data_tensor_matrix, mask_tensor_matrix, 50)
-
+#embedding_matrix = get_embeddings_with_gpu_batch(data_tensor_matrix[:200], mask_tensor_matrix[:200], 50)

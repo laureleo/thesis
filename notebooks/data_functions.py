@@ -146,3 +146,22 @@ def split_data(percentage_to_train_on, input_data, output_data):
     test_y = output_data[split:]
 
     return train_x, train_y, test_x, test_y
+
+
+
+def get_label_file():
+    """
+    Returns the one-hot encoded label matrix corresponding to the wordpiece-segmented and BIO-encoded SUC3 dataset named entity tags
+    """
+    data_type = np.uint8
+    g = np.memmap('../data/ONE_HOT_LABELS.dat', dtype=data_type, shape=(74165, 100, 33))
+    
+    return g
+
+def get_embed_file():
+    """
+    Returns the ALBERT wordpiece embeddings for the entire SUC3 dataset
+    """
+    data_type = np.float64
+    f = np.memmap('../data/MMAP_MATRIX.dat', dtype=data_type, shape=(74165, 100, 768))
+    return f
